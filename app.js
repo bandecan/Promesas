@@ -1,4 +1,4 @@
-// 1. Base de datos simulada
+
 const baseDeDatosClima = {
     "pereira": { temp: "21°C", estado: "Lluvioso" },
     "bogotá": { temp: "14°C", estado: "Nublado" },
@@ -6,24 +6,24 @@ const baseDeDatosClima = {
     "cali": { temp: "28°C", estado: "Despejado" }
 };
 
-// 2. Lógica de la Promise simulando la API
+
 function obtenerClima(ciudad) {
     return new Promise((resolve, reject) => {
-        // Simulamos el retraso de la red de 2 segundos (2000 ms)
+        
         setTimeout(() => {
-            // Normalizamos el texto ingresado (minúsculas y sin espacios extra)
+           
             const ciudadBuscada = ciudad.trim().toLowerCase();
             
             if (baseDeDatosClima[ciudadBuscada]) {
-                resolve(baseDeDatosClima[ciudadBuscada]); // Promesa cumplida
+                resolve(baseDeDatosClima[ciudadBuscada]);
             } else {
-                reject(`Error: La ciudad "${ciudad}" no está registrada.`); // Promesa rechazada
+                reject(`Error: La ciudad "${ciudad}" no está registrada.`); 
             }
         }, 2000);
     });
 }
 
-// 3. Interacción con la interfaz (DOM)
+
 const inputCiudad = document.getElementById('inputCiudad');
 const btnConsultar = document.getElementById('btnConsultar');
 const resultadoDiv = document.getElementById('resultado');
@@ -31,19 +31,23 @@ const resultadoDiv = document.getElementById('resultado');
 btnConsultar.addEventListener('click', () => {
     const ciudad = inputCiudad.value;
 
-    // Validación si el campo está vacío
+   
     if (ciudad === "") {
         resultadoDiv.innerHTML = "<span class='error'>Por favor escribe una ciudad.</span>";
         return;
     }
 
-    // Muestra el estado de carga
+    
     resultadoDiv.innerHTML = "<span>Consultando... ⏳</span>";
 
-    // Consumo de la Promise
+   
     obtenerClima(ciudad)
         .then((datos) => {
-            // Se ejecuta si se llama a resolve()
+            if(.) {
+                
+            }else {
+                
+            }
             resultadoDiv.innerHTML = `
                 <div class="success">
                     <p><strong>Temperatura:</strong> ${datos.temp}</p>
@@ -52,7 +56,7 @@ btnConsultar.addEventListener('click', () => {
             `;
         })
         .catch((error) => {
-            // Se ejecuta si se llama a reject()
+            
             resultadoDiv.innerHTML = `<span class="error">${error}</span>`;
         });
 });
